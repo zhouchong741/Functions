@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jiae.herbs.baselib.view.recyclerhelper.touchhelper.swipemenu.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true">
+
+    <com.jiae.herbs.baselib.view.recyclerhelper.touchhelper.swipemenu.SwipeMenuGroup
+        android:id="@+id/swipe_menu_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:id="@+id/container_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.jiae.herbs.baselib.view.recyclerhelper.touchhelper.swipemenu.SwipeMenuGroup
+        android:id="@+id/swipe_menu_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+</com.jiae.herbs.baselib.view.recyclerhelper.touchhelper.swipemenu.SwipeLayout>

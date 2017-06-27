@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseAppTheme" parent="AppTheme">
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TextViewStyle">
+        <item name="android:fontFamily">"sans-serif"</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+</resources>

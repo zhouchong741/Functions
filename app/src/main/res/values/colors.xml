@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#a69aeb</color>
+    <color name="colorPrimaryDark">#8b7cd9</color>
+    <color name="colorAccent">#7737c5</color>
+
+    <color name="themeLight">#b8aef0</color>
+    <color name="theme">#a69aeb</color>
+    <color name="themeDark">#8b7cd9</color>
+
+    <!--背景色-->
+    <color name="bg_beige">#dda762</color>
+    <color name="indicator_color">@color/theme</color>
+    <color name="button_background_disenabled">@color/common_bg_color</color>
+    <color name="button_background_pressed">@color/themeDark</color>
+    <color name="button_background_normal">@color/theme</color>
+    <color name="bg_red">#fa3a3a</color>
+    <color name="bg_deep_red">#d91d23</color>
+    <color name="bg_black">@color/color_black</color>
+    <color name="bg_white">@color/color_white</color>
+    <color name="common_bg_color">#f1f1f1</color>
+
+    <color name="divider">@color/common_bg_color</color>
+    <color name="bg_click_gray">@color/common_bg_color</color>
+
+    <!-- 字体颜色-->
+    <color name="color_violet">@color/theme</color>
+    <color name="color_black">#333333</color>
+    <color name="color_hint">#dcdcdc</color>
+    <color name="color_gray">#979797</color>
+    <color name="color_white">#ffffff</color>
+    <color name="color_blue">#077aff</color>
+    <color name="color_49">#494949</color>
+
+
+    <!--百科遮罩颜色-->
+    <color name="translation_blank">#83000000</color>
+    <color name="translation_write">#83ffffff</color>
+
+    <!--渐变色-->
+    <color name="gradient_start">#F08AFB</color>
+    <color name="gradient_end">#FAF0FE</color>
+    <color name="pedometer_divider_bg">#F9DEFA</color>
+
+
+</resources>

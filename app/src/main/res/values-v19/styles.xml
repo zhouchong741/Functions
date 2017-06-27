@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseAppTheme" parent="AppTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <!--toolbar theme-->
+    <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--定义ToolBar上Menu的字体颜色-->
+        <item name="actionMenuTextColor">@color/color_white</item>
+        <!--定义ToolBar上回退按钮的图片-->
+        <item name="homeAsUpIndicator">@drawable/back</item>
+        <!-- 定义沉浸式状态栏-->
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:clipToPadding">true</item>
+    </style>
+
+</resources>

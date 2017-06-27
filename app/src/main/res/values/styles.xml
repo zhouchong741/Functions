@@ -1,0 +1,85 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/common_bg_color</item>
+        <item name="android:textColorSecondary">@color/color_white</item>
+        <item name="android:editTextStyle">@style/editTextStyle</item>
+    </style>
+
+    <style name="BaseAppTheme" parent="AppTheme">
+
+    </style>
+
+    <style name="editTextStyle">
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+    <!--toolbar theme-->
+    <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--定义ToolBar上Menu的字体颜色-->
+        <item name="actionMenuTextColor">@color/color_white</item>
+        <!--定义ToolBar上回退按钮的图片-->
+        <item name="homeAsUpIndicator">@drawable/back</item>
+    </style>
+
+    <!--分割线 样式 -->
+    <style name="user_view">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/divider</item>
+    </style>
+
+    <style name="horizontal_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/divider</item>
+    </style>
+
+    <!-- 自定义RatingBar -->
+    <style name="smallRatingBarStyle" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_bar_small</item>
+        <item name="android:minHeight">14dp</item>
+        <item name="android:maxHeight">14dp</item>
+    </style>
+
+    <!--checkbox 样式-->
+    <style name="checkBox_style">
+        <item name="android:button">@drawable/selector_address_select</item>
+    </style>
+
+    <!-- 白框样式EditText-->
+    <style name="editLineBgStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:gravity">left</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColorHint">@color/color_gray</item>
+        <item name="android:textColor">@color/color_49</item>
+    </style>
+
+    <!-- 灰绿色方角按钮样式 -->
+    <style name="buttonBoxStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/selector_button_text_white</item>
+        <item name="android:background">@drawable/selector_bg_button_box_violet</item>
+        <item name="android:minHeight">44dp</item>
+    </style>
+
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <style name="AnimAlpha" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/alpha_show</item>
+        <item name="android:windowExitAnimation">@anim/alpha_hide</item>
+    </style>
+    
+</resources>

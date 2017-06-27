@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Functions</string>
+
+    <!-- 首页中心 -->
+    <string name="hot_product">推荐商品</string>
+    <string name="hot_article">推荐文章</string>
+    <string name="empty_text">Oops! 暂无数据</string>
+
+    <!--标点符号-->
+    <string name="colon">：</string>
+    <string name="plus">+</string>
+    <string name="reduce">一</string>
+    <string name="rmb">￥</string>
+
+    <!-- 提示信息 -->
+    <string name="loading_msg">加载中，请稍后。。。</string>
+    <string name="check_more">查看更多</string>
+
+    <!-- 弹窗 -->
+    <string name="share_to">分享至</string>
+    <string name="friend_circle">朋友圈</string>
+    <string name="friend">好友</string>
+    <string name="toolbar_menu_save">保存</string>
+</resources>
