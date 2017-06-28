@@ -1,5 +1,8 @@
 package xxx.functions.modules;
 
+import android.graphics.drawable.AnimationDrawable;
+import android.widget.ImageView;
+
 import com.jiae.herbs.baselib.mvp.presenter.MvpPresenter;
 
 import xxx.functions.BaseActivity;
@@ -26,6 +29,14 @@ public class FunctionActivity extends BaseActivity {
     @Override
     public void initView() {
         setTitle("应用");
+
+        initAnim();
+    }
+
+    private void initAnim() {
+        ImageView imageView = (ImageView) findViewById(R.id.img_anim);
+        AnimationDrawable animationDrawable = (AnimationDrawable) imageView.getDrawable();
+        animationDrawable.start();
     }
 
     @Override

@@ -7,5 +7,10 @@
 
     <include layout="@layout/view_common_toolbar"/>
 
+    <ImageView
+        android:id="@+id/img_anim"
+        android:src="@drawable/anim_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
