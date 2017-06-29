@@ -45,15 +45,15 @@ public class BaseModel extends MvpModel {
             public boolean interceptSuccess(NetWorkCallback<String> callback, String result, int id) {
                 try {
                     RespondData respondData = JSON.parseObject(result, RespondData.class);
-                    String statusCode = respondData.getStatusCode();
+                    String statusCode = respondData.getCode();
                     switch (statusCode) {
                         case "200"://请求成功
                             callback.success(result, id);
                             break;
                         case "401"://无效令牌或令牌已过期
-                            throw new ErrorCode401Exception(respondData.getMessage());
+                            throw new ErrorCode401Exception(respondData.getMsg());
                         default://从服务器拿到的数据，但是出现了问题
-                            throw new ErrorCodeException(respondData.getMessage());
+                            throw new ErrorCodeException(respondData.getMsg());
                     }
                 } catch (JSONException | ErrorCodeException e) {
                     LogUtil.d("MvpModel", "reqCode :" + id + "result: " + result);

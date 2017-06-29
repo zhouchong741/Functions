@@ -84,4 +84,9 @@ public class TimeUtil {
         format = mount + "." + split[1];
         return format;
     }
+
+    // 时间戳
+    public static long timeStamp(){
+        return System.currentTimeMillis();
+    }
 }

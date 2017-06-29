@@ -8,6 +8,7 @@ import android.text.TextUtils;
 
 import com.jiae.herbs.baselib.utils.MD5Utils;
 import com.jiae.herbs.baselib.utils.SignUtils;
+import com.jiae.herbs.baselib.utils.TimeUtil;
 import com.jiae.herbs.baselib.utils.UIUtil;
 import com.jiae.herbs.baselib.utils.http.RequestParam;
 
@@ -15,7 +16,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import xxx.functions.Constants;
@@ -29,8 +34,29 @@ import xxx.functions.Constants;
 public class HttpUtil {
 
     private static final String INSTALLATION = "INSTALLATION";
+    public static String NONCESTR = "";
     private static String deviceId;
     private static String sID = null;
+
+    public static String getSign() {
+        Map<String, String> map = new HashMap<>();
+        map.put("sysType", "A");
+        map.put("deviceId", deviceId);
+        map.put("appKey", Constants.APPKEY);
+        String randomString = SignUtils.getRandomString(32);
+        NONCESTR = randomString;
+        map.put("nonceStr", NONCESTR);
+        map.put("mobile", "13000000001");
+        map.put("password", "passWd");
+        map.put("templeId", "1");
+        map.put("timeStamp", String.valueOf(TimeUtil.timeStamp() / 1000));
+        //map.put("key", Constants.SECRET);
+        map.put("token", "");
+        String paraTemp = createParaString(paraFilter(map)) + "&key=" + Constants.SECRET;
+        String sign = MD5Utils.MD5Encode(paraTemp, "UTF-8").toUpperCase();
+        return sign;
+    }
+
 
     /**
      * 组装请求参数
@@ -39,31 +65,91 @@ public class HttpUtil {
         if (params == null)
             params = new RequestParam();
         // 用户令牌,登录凭证
-       /* UserManager userManager = HApplication.getInstance().getAppConfig().userManager();
+        /*UserManager userManager = HApplication.getInstance().getAppConfig().userManager();
         if (userManager.isLogin()) {
             params.put("token", userManager.getUser().getAccessToken());
         } else {
             params.put("token", "1");
         }*/
+
+        //params.put("token", "");
+
         // 设备类型
-        params.put("deviceOS", "A");
+        //params.put("sysType", "A");
         // 设备id
         String deviceId = getDeviceId(context);
-        params.put("deviceId", deviceId);
+        //params.put("deviceId", deviceId);
+        // 时间戳
+        //params.put("timeStamp", TimeUtil.timeStamp() / 1000);
+        // templeId
+        //params.put("templeId", 5);
         // 应用ID
-        params.put("clientId", Constants.CLIENT_ID);
+        //params.put("clientId", Constants.CLIENT_ID);
+        // appKey
+        //params.put("appKey", Constants.APPKEY);
         // 随机字符串
-        String randomString = SignUtils.getRandomString(12);
-        params.put("nonce", randomString);
+        String randomString = SignUtils.getRandomString(32);
+        //params.put("nonceStr", randomString);
         // 签名
-        String str = "clientId" + "=" + Constants.CLIENT_ID + "&" +
-                "deviceId" + "=" + deviceId + "&" +
-                "nonce" + "=" + randomString + "&" +
-                "clientSecret" + "=" + Constants.CLIENT_SECRET;
-        String sign = MD5Utils.MD5Encode(str, "UTF-8").toUpperCase();
-        params.put("sign", sign);
+        /*String str = "sysType=A" + "&"
+                + "deviceId=" + deviceId + "&"
+                + "appKey=" + Constants.APPKEY + "&"
+                + "token=" + "&"
+                + "nonceStr=" + randomString + "&"
+                + "key=" + Constants.SECRET;*/
+        // 排序
+        Map<String, String> map = new HashMap<>();
+        map.put("sysType", "A");
+        map.put("deviceId", deviceId);
+        map.put("appKey", Constants.APPKEY);
+        map.put("nonceStr", randomString);
+        map.put("mobile", "13000000001");
+        map.put("password", "passWd");
+        map.put("templeId", "1");
+        map.put("timeStamp", String.valueOf(TimeUtil.timeStamp() / 1000));
+        //map.put("key", Constants.SECRET);
+        map.put("token", "");
+        String paraTemp = createParaString(paraFilter(map)) + "&key=" + Constants.SECRET;
+        String sign = MD5Utils.MD5Encode(paraTemp, "UTF-8").toUpperCase();
+        //params.put("sign", sign);
         return params;
     }
+
+
+    // 排序
+    public static String createParaString(Map<String, String> params) {
+        java.util.List<String> keys = new ArrayList<String>(params.keySet());
+        Collections.sort(keys);
+        String prestr = "";
+        for (int i = 0; i < keys.size(); i++) {
+            String key = keys.get(i);
+            String value = params.get(key);
+
+            if (i == keys.size() - 1) {// 拼接时，不包括最后一个&字符
+                prestr = prestr + key + "=" + value;
+            } else {
+                prestr = prestr + key + "=" + value + "&";
+            }
+        }
+        return prestr;
+    }
+
+    // 除空值
+    public static Map<String, String> paraFilter(Map<String, String> sArray) {
+        Map<String, String> result = new HashMap<String, String>();
+        if (sArray == null || sArray.size() <= 0) {
+            return result;
+        }
+        for (String key : sArray.keySet()) {
+            String value = sArray.get(key);
+            if (value == null || value.equals("") || key.equalsIgnoreCase("sign") || key.equalsIgnoreCase("sign_type")) {
+                continue;
+            }
+            result.put(key, value);
+        }
+        return result;
+    }
+
 
     /**
      * 获取设备id

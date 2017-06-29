@@ -12,8 +12,8 @@ import com.jiae.herbs.baselib.mvp.bean.Data;
  */
 public class RespondData extends Data {
     private String data;
-    private String statusCode;
-    private String message;
+    private String code;
+    private String msg;
 
     @Override
     public int describeContents() {
@@ -23,8 +23,8 @@ public class RespondData extends Data {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.data);
-        dest.writeString(this.statusCode);
-        dest.writeString(this.message);
+        dest.writeString(this.code);
+        dest.writeString(this.msg);
     }
 
     public RespondData() {
@@ -32,8 +32,8 @@ public class RespondData extends Data {
 
     protected RespondData(Parcel in) {
         this.data = in.readString();
-        this.statusCode = in.readString();
-        this.message = in.readString();
+        this.code = in.readString();
+        this.msg = in.readString();
     }
 
     public static final Creator<RespondData> CREATOR = new Creator<RespondData>() {
@@ -56,19 +56,19 @@ public class RespondData extends Data {
         this.data = data;
     }
 
-    public String getStatusCode() {
-        return statusCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setStatusCode(String statusCode) {
-        this.statusCode = statusCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

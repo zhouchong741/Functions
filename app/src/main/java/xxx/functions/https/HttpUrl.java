@@ -13,7 +13,9 @@ public class HttpUrl {
      * 服务器地址
      */
 //    public static final String SERVER_HOST = "http://test.herbs-mobile.jiae.com";
-    public static final String SERVER_HOST = "http://t.mobile.bfengtang.com";
+    //public static final String SERVER_HOST = "http://t.mobile.bfengtang.com";
+    //public static final String SERVER_HOST = "http://114.55.53.55:28080/api/app";
+    public static final String SERVER_HOST = "http://10.10.1.130:8080/api/app";
     /*---------------------------------------------v1.0---------------------------------------*/
 
     /**
@@ -108,7 +110,7 @@ public class HttpUrl {
     /**
      * 登录验证
      */
-    public static final String LOGIN_VALIDATE = "/rest/login";
+    public static final String LOGIN_VALIDATE = "/user/login";
     /**
      * 注册短信验证码
      */
@@ -220,12 +222,12 @@ public class HttpUrl {
     /**
      * 服务器类型
      */
-    public static final String HERBS = "herbs";
+    public static final String SIYUANZAIXIAN = "gycs";
 
     public static String makeUrl(String url, String tag) {
         String result = "";
         switch (tag) {
-            case HERBS:
+            case SIYUANZAIXIAN:
                 result = SERVER_HOST + url;
                 break;
         }
