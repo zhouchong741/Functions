@@ -47,6 +47,37 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
         ButterKnife.bind(this);
     }
 
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_login;
+    }
+
+    @Override
+    public void initView() {
+        setTitle("登录");
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
+
+    }
+
+    @Override
+    public LoginPresenter newPresenter() {
+        return new LoginPresenter();
+    }
+
+    @OnClick(R.id.login)
+    public void onViewClicked() {
+        login();
+    }
+
     private void login() {
         long phone = Long.parseLong(mUserName.getText().toString().trim());
         String pass = mPassword.getText().toString().trim();
@@ -78,36 +109,5 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
 
         object.put("sign", sign);
         getPresenter().login(HttpUrl.LOGIN_VALIDATE, HttpUrl.SIYUANZAIXIAN, object.toJSONString(), getStringRes(R.string.waiting_login), HttpUrl.REQ_CODE_LOGIN);
-    }
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_login;
-    }
-
-    @Override
-    public void initView() {
-        setTitle("登录");
-
-    }
-
-    @Override
-    public void initData() {
-
-    }
-
-    @Override
-    public void initListener() {
-
-    }
-
-    @Override
-    public LoginPresenter newPresenter() {
-        return new LoginPresenter();
-    }
-
-    @OnClick(R.id.login)
-    public void onViewClicked() {
-        login();
     }
 }

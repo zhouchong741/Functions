@@ -22,4 +22,6 @@
     <string name="friend">好友</string>
     <string name="toolbar_menu_save">保存</string>
     <string name="waiting_login">正在登录...</string>
+    <string name="waiting_register">正在注册...</string>
+
 </resources>

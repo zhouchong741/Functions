@@ -14,7 +14,7 @@ public class HttpUrl {
      */
 //    public static final String SERVER_HOST = "http://test.herbs-mobile.jiae.com";
     //public static final String SERVER_HOST = "http://t.mobile.bfengtang.com";
-    public static final String SERVER_HOST = "http://114.55.53.55:28080/api/app";
+    public static final String SERVER_HOST = "http://114.55.53.55:28080";
 //    public static final String SERVER_HOST = "http://10.10.1.130:8080/api/app";
     /*---------------------------------------------v1.0---------------------------------------*/
 
@@ -110,7 +110,13 @@ public class HttpUrl {
     /**
      * 登录验证
      */
-    public static final String LOGIN_VALIDATE = "/user/login";
+    public static final String LOGIN_VALIDATE = "/api/app/user/login";
+
+    /**
+     * 注册用户
+     */
+    public static final String REGISTER = "/api/app/user/add";
+
     /**
      * 注册短信验证码
      */
@@ -123,10 +129,6 @@ public class HttpUrl {
      * 检测验证码
      */
     public static final String CHECK_VALIDATE_CODE = "/rest/check_verificode";
-    /**
-     * 注册用户
-     */
-    public static final String REGISTER = "/rest/signup";
     /**
      * 重置密码
      */
