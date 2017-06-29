@@ -6,9 +6,7 @@ import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import com.jiae.herbs.baselib.utils.MD5Utils;
 import com.jiae.herbs.baselib.utils.SignUtils;
-import com.jiae.herbs.baselib.utils.TimeUtil;
 import com.jiae.herbs.baselib.utils.UIUtil;
 import com.jiae.herbs.baselib.utils.http.RequestParam;
 
@@ -23,8 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import xxx.functions.Constants;
-
 /**
  * 标题：网络工具类
  * 作者：kisen
@@ -37,26 +33,6 @@ public class HttpUtil {
     public static String NONCESTR = "";
     private static String deviceId;
     private static String sID = null;
-
-    public static String getSign() {
-        Map<String, String> map = new HashMap<>();
-        map.put("sysType", "A");
-        map.put("deviceId", deviceId);
-        map.put("appKey", Constants.APPKEY);
-        String randomString = SignUtils.getRandomString(32);
-        NONCESTR = randomString;
-        map.put("nonceStr", NONCESTR);
-        map.put("mobile", "13000000001");
-        map.put("password", "passWd");
-        map.put("templeId", "1");
-        map.put("timeStamp", String.valueOf(TimeUtil.timeStamp() / 1000));
-        //map.put("key", Constants.SECRET);
-        map.put("token", "");
-        String paraTemp = createParaString(paraFilter(map)) + "&key=" + Constants.SECRET;
-        String sign = MD5Utils.MD5Encode(paraTemp, "UTF-8").toUpperCase();
-        return sign;
-    }
-
 
     /**
      * 组装请求参数
@@ -98,7 +74,7 @@ public class HttpUtil {
                 + "nonceStr=" + randomString + "&"
                 + "key=" + Constants.SECRET;*/
         // 排序
-        Map<String, String> map = new HashMap<>();
+        /*Map<String, String> map = new HashMap<>();
         map.put("sysType", "A");
         map.put("deviceId", deviceId);
         map.put("appKey", Constants.APPKEY);
@@ -110,7 +86,7 @@ public class HttpUtil {
         //map.put("key", Constants.SECRET);
         map.put("token", "");
         String paraTemp = createParaString(paraFilter(map)) + "&key=" + Constants.SECRET;
-        String sign = MD5Utils.MD5Encode(paraTemp, "UTF-8").toUpperCase();
+        String sign = MD5Utils.MD5Encode(paraTemp, "UTF-8").toUpperCase();*/
         //params.put("sign", sign);
         return params;
     }

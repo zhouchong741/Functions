@@ -2,12 +2,17 @@ package xxx.functions.modules.login;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
-import android.view.View;
 import android.widget.Button;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jiae.herbs.baselib.utils.MD5Utils;
+import com.jiae.herbs.baselib.utils.SignUtils;
 import com.jiae.herbs.baselib.utils.TimeUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import xxx.functions.BaseActivity;
@@ -16,7 +21,8 @@ import xxx.functions.R;
 import xxx.functions.https.HttpUrl;
 import xxx.functions.https.HttpUtil;
 
-import static xxx.functions.https.HttpUtil.NONCESTR;
+import static xxx.functions.https.HttpUtil.createParaString;
+import static xxx.functions.https.HttpUtil.paraFilter;
 
 /**
  * 标题：
@@ -27,9 +33,12 @@ import static xxx.functions.https.HttpUtil.NONCESTR;
 
 public class LoginActivity extends BaseActivity<LoginPresenter> {
 
-
-    private TextInputEditText mUserName;
-    private TextInputEditText mPassword;
+    @BindView(R.id.login)
+    Button mLogin;
+    @BindView(R.id.user_name)
+    TextInputEditText mUserName;
+    @BindView(R.id.password)
+    TextInputEditText mPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +59,24 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
         //object.put("key", Constants.SECRET);
         object.put("timeStamp", TimeUtil.timeStamp() / 1000);
         object.put("deviceId", HttpUtil.getDeviceId(mContext));
-        //String randomString = SignUtils.getRandomString(32);
-        object.put("nonceStr",NONCESTR);
-        object.put("sign", HttpUtil.getSign());
+        String randomString = SignUtils.getRandomString(32);
+        object.put("nonceStr", randomString);
+
+        //签名
+        Map<String, String> map = new HashMap<>();
+        map.put("templeId", "1");
+        map.put("mobile", String.valueOf(phone));
+        map.put("password", pass);
+        map.put("sysType", "A");
+        map.put("appKey", Constants.APPKEY);
+        map.put("timeStamp", String.valueOf(TimeUtil.timeStamp() / 1000));
+        map.put("nonceStr", randomString);
+        map.put("token", "");
+        map.put("deviceId", HttpUtil.getDeviceId(mContext));
+        String paraTemp = createParaString(paraFilter(map)) + "&key=" + Constants.SECRET;
+        String sign = MD5Utils.MD5Encode(paraTemp, "UTF-8").toUpperCase();
+
+        object.put("sign", sign);
         getPresenter().login(HttpUrl.LOGIN_VALIDATE, HttpUrl.SIYUANZAIXIAN, object.toJSONString(), getStringRes(R.string.waiting_login), HttpUrl.REQ_CODE_LOGIN);
     }
 
@@ -64,15 +88,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
     @Override
     public void initView() {
         setTitle("登录");
-        mUserName = (TextInputEditText) findViewById(R.id.user_name);
-        mPassword = (TextInputEditText) findViewById(R.id.password);
-        Button button = (Button) findViewById(R.id.login);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
+
     }
 
     @Override
@@ -92,5 +108,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
 
     @OnClick(R.id.login)
     public void onViewClicked() {
+        login();
     }
 }

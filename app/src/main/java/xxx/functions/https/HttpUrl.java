@@ -14,8 +14,8 @@ public class HttpUrl {
      */
 //    public static final String SERVER_HOST = "http://test.herbs-mobile.jiae.com";
     //public static final String SERVER_HOST = "http://t.mobile.bfengtang.com";
-    //public static final String SERVER_HOST = "http://114.55.53.55:28080/api/app";
-    public static final String SERVER_HOST = "http://10.10.1.130:8080/api/app";
+    public static final String SERVER_HOST = "http://114.55.53.55:28080/api/app";
+//    public static final String SERVER_HOST = "http://10.10.1.130:8080/api/app";
     /*---------------------------------------------v1.0---------------------------------------*/
 
     /**
