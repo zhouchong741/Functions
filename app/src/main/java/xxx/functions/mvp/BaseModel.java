@@ -50,8 +50,15 @@ public class BaseModel extends MvpModel {
                         case "200"://请求成功
                             callback.success(result, id);
                             break;
-                        case "401"://无效令牌或令牌已过期
-                            throw new ErrorCode401Exception(respondData.getMsg());
+                        case "202"://重复账号 已经注册
+                            callback.success(result, id);
+                            break;
+                        case "500"://服务器错误
+                            callback.success(result, id);
+                            break;
+                        case "5000"://授权失败
+                            callback.success(result,id);
+                            break;
                         default://从服务器拿到的数据，但是出现了问题
                             throw new ErrorCodeException(respondData.getMsg());
                     }

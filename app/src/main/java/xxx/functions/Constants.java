@@ -11,11 +11,11 @@ public class Constants {
 	/**
 	 * 接口签名数据
 	 */
-
+	public static final int TEMPLEID = 1;
+	public static final String SYSTYPE = "A";
 	public static final String APPKEY = "dtsgycs";
 	public static final String SECRET = "234213412dsfasfasfx234234";
-	public static final String CLIENT_ID = "rps0j922t";
-	public static final String CLIENT_SECRET = "2l6ccipguvhan12k23qssku96tl";
+
 	/**
 	 * 支付方式
 	 */

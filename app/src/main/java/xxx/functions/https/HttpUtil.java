@@ -30,7 +30,6 @@ import java.util.UUID;
 public class HttpUtil {
 
     private static final String INSTALLATION = "INSTALLATION";
-    public static String NONCESTR = "";
     private static String deviceId;
     private static String sID = null;
 

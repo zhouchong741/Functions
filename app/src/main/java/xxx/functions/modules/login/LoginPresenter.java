@@ -3,6 +3,7 @@ package xxx.functions.modules.login;
 import com.jiae.herbs.baselib.utils.http.NetWorkCallback;
 
 import xxx.functions.data.RespondData;
+import xxx.functions.https.HttpUrl;
 import xxx.functions.mvp.BasePresenter;
 
 /**
@@ -20,7 +21,29 @@ public class LoginPresenter extends BasePresenter implements NetWorkCallback<Res
 
     @Override
     public void success(RespondData result, int id) {
-        System.out.println(result + ";===id====" + id);
+        switch (id) {
+            case HttpUrl.REQ_CODE_LOGIN:
+                loginCallBack(result);
+                break;
+        }
+    }
+
+    private void loginCallBack(RespondData data) {
+        // 解析登录获取的数据
+        switch (Integer.parseInt(data.getCode())) {
+            case HttpUrl.REQ_CODE_LOGIN:
+                showMsg("登录码==登录了");
+                break;
+            case HttpUrl.REQ_CODE_SERVER_ERROR:
+                showMsg("错误码==服务器错误");
+                break;
+            case HttpUrl.REQ_CODE_FAIL:
+                showMsg(data.getMsg());
+                break;
+            default:
+                showMsg("其他原因错误码=" + data.getCode() + "; 错误信息=" + data.getMsg());
+                break;
+        }
     }
 
     @Override

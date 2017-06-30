@@ -11,8 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="30dp">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/user_name"
@@ -21,9 +21,9 @@
             android:hint="用户名"/>
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/password"
             android:hint="密码"
             android:inputType="textPassword"/>
 
@@ -32,6 +32,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="登录"/>
+
+        <TextView
+            android:id="@+id/go_to_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="end"
+            android:text="去注册 >"/>
     </LinearLayout>
 
 </LinearLayout>
