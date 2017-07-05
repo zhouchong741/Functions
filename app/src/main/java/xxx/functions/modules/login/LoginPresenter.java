@@ -1,9 +1,12 @@
 package xxx.functions.modules.login;
 
+import com.alibaba.fastjson.JSON;
 import com.jiae.herbs.baselib.utils.http.NetWorkCallback;
 
 import xxx.functions.data.RespondData;
 import xxx.functions.https.HttpUrl;
+import xxx.functions.modules.login.data.ImUserData;
+import xxx.functions.modules.login.data.LoginResultData;
 import xxx.functions.mvp.BasePresenter;
 
 /**
@@ -31,8 +34,12 @@ public class LoginPresenter extends BasePresenter implements NetWorkCallback<Res
     private void loginCallBack(RespondData data) {
         // 解析登录获取的数据
         switch (Integer.parseInt(data.getCode())) {
-            case HttpUrl.REQ_CODE_LOGIN:
+            case 200:
                 showMsg("登录码==登录了");
+                // 进入主界面
+                LoginResultData loginResultData = JSON.parseObject(data.getData(),LoginResultData.class);
+                ImUserData imData = loginResultData.getImuser();
+                System.out.println(imData);
                 break;
             case HttpUrl.REQ_CODE_SERVER_ERROR:
                 showMsg("错误码==服务器错误");

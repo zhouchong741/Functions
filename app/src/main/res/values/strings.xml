@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Functions</string>
 
+    <!-- main -->
+    <string name="home">首页</string>
+    <string name="article">文章</string>
+    <string name="mall">商城</string>
+    <string name="mine">我的</string>
+
     <!-- 首页中心 -->
     <string name="hot_product">推荐商品</string>
     <string name="hot_article">推荐文章</string>
